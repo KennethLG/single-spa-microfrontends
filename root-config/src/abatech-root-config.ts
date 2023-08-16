@@ -10,15 +10,7 @@ const routes = constructRoutes(microfrontendLayout);
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
-    // return System.import(name);
-    switch(name) {
-      case 'microfrontend-1':
-        return System.import('http://localhost:8081/main.js');
-      case 'microfrontend-2':
-        return System.import('http://localhost:8082/main.js');
-      default:
-        throw new Error(`Unknown application: ${name}`);
-    }
+    return System.import(name);
   },
 });
 const layoutEngine = constructLayoutEngine({ routes, applications });
